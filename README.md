@@ -1,3 +1,9 @@
+#Instructions
+1. Download all files from repo.
+2. Install  and launch npm install and npm start or yarn install and yarn start.
+3. Website will launch in http://localhost:3000/
+
+
 # MyReads Project
 
 This is the starter template for the final assessment project for Udacity's React Fundamentals course. The goal of this template is to save you time by providing a static example of the CSS and HTML markup that may be used, but without any of the React code that is needed to complete the project. If you choose to start with this template, your job will be to add interactivity to the app by refactoring the static code in this template.
