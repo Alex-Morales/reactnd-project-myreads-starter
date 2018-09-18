@@ -15,11 +15,15 @@ class BooksApp extends React.Component {
     showSearchPage: false
   }
 
+clickBack = () => {
+  this.setState({ showSearchPage: false })
+}
   render() {
+
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <SearchPage />
+          <SearchPage clickBack={this.clickBack} />
         ) : (
           //Start of Bookpage
           <div className="list-books">
