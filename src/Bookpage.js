@@ -16,7 +16,7 @@ export default class Bookpage extends Component {
   }
 
   render() {
-    const {showSearchPageClick, books} = this.props;
+    const {showSearchPageClick, books, changeShelf} = this.props;
     const shelves = this.putBooksOnShelf(books);
     return (
       //Start of Bookpage
@@ -29,7 +29,7 @@ export default class Bookpage extends Component {
         <div className="list-books-content">
           <div>
             {/*MAPS to create each shelf.*/}
-            {shelves.map(shelf=> <Shelf shelf={shelf} key = {shelf.type}/>)}
+            {shelves.map(shelf=> <Shelf shelf={shelf} key = {shelf.type} changeShelf={changeShelf}/>)}
           </div>
         </div>
         <div className="open-search">
