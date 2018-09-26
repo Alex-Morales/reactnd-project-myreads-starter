@@ -10,19 +10,30 @@ export default class SearchPage extends Component {
     //DON'T CALL this.setState() here!
     this.state = {
       books: [],
-      query: ''
+      query: '',
+      shelf: ''
     }
+  }
+
+  syncBooks = (queryBooks) => {
+    return(queryBooks.map(book => {
+      const myBook = this.props.books.find(item => item.id === book.id);
+      if( myBook) {
+        book['shelf'] = myBook.shelf;
+      }
+      return book;
+    }))
   }
 
   inputChange = (event) => {
     const query = event.target.value;
     this.setState({query});
     BooksAPI.search(query)
-    .then(response => this.setState({books: response}))
+    .then(response => this.setState({books: this.syncBooks(response)}))
   }
 
   render() {
-    const {clickBack} = this.props;
+    const {clickBack, changeShelf} = this.props;
     const {books} = this.state;
     console.log({books})
     return (
@@ -50,7 +61,7 @@ export default class SearchPage extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-          {books.map(books => <Book books={books} key = {books.id}/>)}
+          {books.map(books => <Book books={books} key = {books.id} changeShelf={changeShelf}/>)}
           </ol>
         </div>
       </div>

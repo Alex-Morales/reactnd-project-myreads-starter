@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 
 export default class Book extends Component {
 
@@ -23,8 +22,8 @@ export default class Book extends Component {
 
   render () {
     const { books } = this.props;
-    const { shelf } = this.state;
-    const { imageLinks, authors = [], title } = books;
+    const { shelf = 'none' } = this.state;
+    const { imageLinks = [''], authors = ['Unknown'], title } = books;
 
     return(
       <li>

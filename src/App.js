@@ -11,7 +11,7 @@ class BooksApp extends React.Component {
     //DON'T CALL this.setState() here!
     this.state = {
       books:[],
-      showSearchPage: true}
+      showSearchPage: false}
   }
 
   componentDidMount = () => {
@@ -44,6 +44,7 @@ class BooksApp extends React.Component {
           <SearchPage
             clickBack={this.clickBack}
             books={books}
+            changeShelf={this.changeShelf}
           />
         ) : (
           <Bookpage
