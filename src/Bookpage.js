@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Shelf from './Shelf'
+import { Link } from 'react-router-dom'
+
 
 export default class Bookpage extends Component {
 
@@ -16,7 +18,7 @@ export default class Bookpage extends Component {
   }
 
   render() {
-    const {showSearchPageClick, books, changeShelf} = this.props;
+    const {books, changeShelf} = this.props;
     const shelves = this.putBooksOnShelf(books);
     return (
       //Start of Bookpage
@@ -33,7 +35,7 @@ export default class Bookpage extends Component {
           </div>
         </div>
         <div className="open-search">
-          <a onClick={showSearchPageClick}>Add a book</a>
+          <Link to="/search">Add a book</Link>
         </div>
       </div>
       //End of Bookpage

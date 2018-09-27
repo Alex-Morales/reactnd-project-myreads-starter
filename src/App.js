@@ -3,6 +3,7 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import SearchPage from './SearchPage'
 import Bookpage from './Bookpage'
+import { Route } from 'react-router-dom'
 
 class BooksApp extends React.Component {
 
@@ -10,21 +11,14 @@ class BooksApp extends React.Component {
     super(props);
     //DON'T CALL this.setState() here!
     this.state = {
-      books:[],
-      showSearchPage: false}
+      books:[]
+    }
   }
 
   componentDidMount = () => {
     BooksAPI.getAll()
     .then(response => this.setState({books: response}))
     .catch(error => console.log(error));
-  }
-
-  clickBack = () => {
-    this.setState({ showSearchPage: false })
-  }
-  showSearchPageClick = () => {
-    this.setState({ showSearchPage: true })
   }
 
   changeShelf = (changeBook, newShelf) => {
@@ -40,19 +34,18 @@ class BooksApp extends React.Component {
 
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
+        <Route path="/search" render={() => (
           <SearchPage
-            clickBack={this.clickBack}
             books={books}
             changeShelf={this.changeShelf}
           />
-        ) : (
+        )}/>
+        <Route exact path="/" render={() => (
           <Bookpage
             books={books}
-            showSearchPageClick={this.showSearchPageClick}
             changeShelf={this.changeShelf}
           />
-        )}
+        )}/>
       </div>
     )
   }
