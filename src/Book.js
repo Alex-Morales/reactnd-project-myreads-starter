@@ -23,7 +23,7 @@ export default class Book extends Component {
   render () {
     const { books } = this.props;
     const { shelf = 'none' } = this.state;
-    const { imageLinks = ['http://via.placeholder.com/128x193?text=No%20Cover'], authors = ['Unknown'], title } = books;
+    const { imageLinks = [''], authors = ['Unknown'], title } = books;
 
     return(
       <li>
