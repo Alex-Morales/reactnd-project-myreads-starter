@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as BooksAPI from './BooksAPI'
 import Book from './Book'
 import { Link } from 'react-router-dom'
+import {DebounceInput} from 'react-debounce-input'
 
 export default class SearchPage extends Component {
 
@@ -30,6 +31,7 @@ export default class SearchPage extends Component {
     this.setState({query});
     BooksAPI.search(query)
     .then(response => this.setState({books: this.syncBooks(response)}))
+    .catch(error => {console.log(error);});
   }
 
   render() {
@@ -50,7 +52,9 @@ export default class SearchPage extends Component {
               However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
               you don't find a specific author or title. Every search is limited by search terms.
             */}
-            <input
+            <DebounceInput
+              minLength={2}
+              debounceTimeout={200}
               value={this.state.query}
               onChange={this.inputChange}
               type="text"
