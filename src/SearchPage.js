@@ -31,7 +31,8 @@ export default class SearchPage extends Component {
     this.setState({query});
     BooksAPI.search(query)
     .then(response => this.setState({books: this.syncBooks(response)}))
-    .catch(error => {console.log(error);});
+    .catch(error => {console.log(error);
+    return this.setState({books:[]})});
   }
 
   render() {
